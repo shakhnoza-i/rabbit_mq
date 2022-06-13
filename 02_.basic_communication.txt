@@ -24,6 +24,7 @@ render is for image rendering.
 
 If this default exchange receives a message from the publisher with the routing 
 key as Cropper, then it will forwarded this message to Cropper: RK == queue_name
+In Default Exchange, the Routing Key is the Subscriber's queue name
 
 Once the channel was created, the subscriber create a message queue and associate
 it with a channel.
@@ -34,7 +35,6 @@ is not configured properly.
 
 Pull method of message consuming - whenever a message is posted into the queue, the 
 corresponding callback function will be executed from subscriber.
-Callback function will be executed every time a message is available into the queue
 After associating the callback function to the message queue, then the subscriber 
 can start consuming the messages from the queue and this will keep on going in a loop.
-
+So callback function will be executed every time a message is available into the queue
