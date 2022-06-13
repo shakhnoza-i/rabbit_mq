@@ -1,0 +1,40 @@
+1. Publisher establish tcp connection to the exchange.
+This is the TCP connection, where authentication, identity, confirmation
+and security parameter was established.
+2. Create a channel inside the connection.
+Every message is published using one channel of the connection.
+Publishers need to specify on which channel the message is being sent.
+There are multiple components inside the publisher, they can have their 
+own channels, but they need to share the same connection, cause connection 
+is a big resource.
+
+
+Who creates the exchange?
+Publisher can create the exchange in the broker and as well as broker also 
+provides a default exchange if a publisher is not creating it
+
+RabbitMQ provides 4  type of exchanges
+Now, we will discuss the case where a publisher is not creating an exchange.
+Default exchange:
+
+cropper is for the image cropping process message.
+processor is for image processing a written message.
+editor is for image editing.
+render is for image rendering.
+
+If this default exchange receives a message from the publisher with the routing 
+key as Cropper, then it will forwarded this message to Cropper: RK == queue_name
+
+Once the channel was created, the subscriber create a message queue and associate
+it with a channel.
+
+AMQP is very flexible is good for the developer as it allows the multiple options 
+to him for configuring the system, but it leads to errors as well, if the broker 
+is not configured properly.
+
+Pull method of message consuming - whenever a message is posted into the queue, the 
+corresponding callback function will be executed from subscriber.
+Callback function will be executed every time a message is available into the queue
+After associating the callback function to the message queue, then the subscriber 
+can start consuming the messages from the queue and this will keep on going in a loop.
+
