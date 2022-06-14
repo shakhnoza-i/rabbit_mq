@@ -1,0 +1,17 @@
+Fanout exchange it's not a default exchange, so we need to create it explicitly.
+Additionally, we need to create these different queues and bindings between the 
+queues and fanout exchange.
+
+
+Queue remains lingering.
+The queue was not deleted, even if the subscriber got completed or interrupted.
+Now, how to solve this problem?
+Queue has exclusive connection to a channel, so queue will be deleted a 
+as soon as the corresponding channel is closed
+Now, since this is exclusive to the subscriber, Therefore, now all the 
+subscribers, they need to have unique names as well in the broker.
+So best solution is Temporary queues
+RabbitMQ choose the queue name when the subscriber created, so subscriber 
+does not specify the actual name at all. And after the queue has been created, 
+the subscriber can get access to the name using the available APIs and then 
+use this name to specify the binding between the queue and the exchange.
