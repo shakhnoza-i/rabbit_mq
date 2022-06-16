@@ -13,7 +13,7 @@ Who creates the exchange?
 Publisher can create the exchange in the broker and as well as broker also 
 provides a default exchange if a publisher is not creating it
 
-RabbitMQ provides 4  type of exchanges
+RabbitMQ provides 4 type of exchanges
 Now, we will discuss the case where a publisher is not creating an exchange.
 Default exchange:
 
@@ -26,8 +26,8 @@ If this default exchange receives a message from the publisher with the routing
 key as Cropper, then it will forwarded this message to Cropper: RK == queue_name
 In Default Exchange, the Routing Key is the Subscriber's queue name
 
-Once the channel was created, the subscriber create a message queue and associate
-it with a channel.
+Once the channel was created, the subscriber create a message queue if not exist
+and associate it with a channel.
 
 AMQP is very flexible is good for the developer as it allows the multiple options 
 to him for configuring the system, but it leads to errors as well, if the broker 

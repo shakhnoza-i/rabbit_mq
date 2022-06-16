@@ -10,3 +10,11 @@ sudo rabbitmqctl set_user_tags admin administrator
 sudo rabbitmqctl set_permissions -p / admin "." "." "."
 
 localhost:15672/ - to run server
+
+# show all exchanges
+sudo rabbitmqctl list_exchanges
+
+# show all queues
+sudo rabbitmqctl list_queues
+
+sudo rabbitmqctl list_bindings
