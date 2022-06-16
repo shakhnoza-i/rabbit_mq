@@ -1,0 +1,30 @@
+default exchange - one to one connection
+fanout exchange - broadcast
+selective exchange(direct exchange) - multicast, like vlans
+
+Minuses of Fanout Exchange:
+- this reduces the performance of the subscriber as it gets busy in filtering 
+the required messages
+- every subscriber will receive all the messages which may be confidential
+for the intended subscriber - raises a serious security concern in the system
+
+Selection Routing - Example (picture)
+We define for routing keys - error, warning info and others
+Exchange filters the incoming messages based upon the binding rules and 
+sends the messages to the intended recipient only.
+Since the exchange does not have any binding rule for the other routing key
+- they get dropped
+
+
+Selection Routing - Example2 (picture)
+One subscriber is interested in the messages for more than one routing key
+One subscriber is creating more than one binding in the exchange for the 
+routing key it interested in receive. So there are more than one binding 
+for one particular queue in these binding rules.
+
+So publishers need not be aware now how messages are being processed and 
+who is processing them. Publishers need not be aware of any subscriber 
+or it's a message queue.
+
+If there is no binding rules for routing key - msg with this type of routing
+key will be dropped
