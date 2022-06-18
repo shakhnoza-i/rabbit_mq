@@ -3,7 +3,7 @@ where the messages need to be classified in multiple dimensions
 Message (picture)
 
 
-Subscriber binding (picture)
+Subscriber binding problems(picture)
 Just by combining the different pieces of information in a single routing, 
 it does not solve the subscriber side of the problem
 
@@ -13,5 +13,16 @@ Very same to regular expressions
 # - to match zero or more words.
 Example №3: 3 way to define a binding rule (#.A3# - is a more of flexible rule)
 
-So when you are developing a product, you need to consider what aspects are important 
-for your product and design it accordingly.
+So when you are developing a product, you need to consider what aspects are 
+important for your product and design it accordingly.
+
+
+11. Bindings loss (picture)
+What happens next is that the publisher deletes the exchange now when the 
+publisher has deleted. The subscriber is still there.
+And after that, when the publisher comes back. It creates the exchange, posted 
+the messages to it. But this time, the bindings have been already lost.
+
+So therefore, whenever you are designing your system, you need to ensure 
+that the exchange and the binding creations are done properly and exchange 
+doesn't get deleted unnecessarily because this was a very important point.
