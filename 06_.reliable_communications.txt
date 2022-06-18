@@ -1,0 +1,25 @@
+Failure points (picture)
+Deployment of Rabbit MQ system where the publisher, broker and subscribers
+are deployed on different machines, this system gets a few failure points.
+
+1) Connection/Channel may go down
+
+2) Exchange may go down or restart
+
+3) Queue may go down or restart
+
+Problems in queue-subscriber point
+4) When a subscriber receives a message, it has to acknowledge it back to the
+queue so that it can be deleted from the queue and the acknowledgement can 
+be automatic or manual. 
+In case of automatic acknowledgement. May happen is that subscriber has 
+automatically acknowledged the message to the queue, but haven't processed 
+it so far. And before it completes the processing of this message, it goes 
+down.
+5) Next problem is that if we have fewer subscribers attached to the same 
+message queue. Now, what if a particular subscriber is continuously receiving 
+the heavy messages by having messages, whereas the other subscribers will not 
+be that much overloaded. By default, the queue send the messages to it 
+attached subscriber in a round robin fashion. However, this particular mechanism 
+can be changed. RabbitMQ gives us a provision to select how many messages can be 
+sent to a subscriber before we get the acknowledgement back from.
