@@ -34,8 +34,6 @@ for i in range(10):
         print("Connection Closed")
 
 
-
-
 channel.exchange_delete(exchange='logs_exchange', if_unused=False)
 
 connection.close()

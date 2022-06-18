@@ -1,0 +1,22 @@
+RPC implementation
+    The sender or publisher request some processing to be done by the subscriber or 
+the receiver, and then it expects the response back from it. And secondly, the 
+publisher waits for the response to come back after sending the request.
+    It is just like a local function call. Whenever a function is invoked, the 
+caller waits for its are done, and only after it returns, the caller moves ahead.
+Function call or the request handling is not local, it is remote
+
+RPC communication (picture)
+So 2 things are required:
+- the publisher needs to inform the subscriber how to send back the response
+- publisher needs to verify that the received response is the correct response only
+So for this, publisher adds two parameters to the published message:
+- reply queue
+- correlation_id - subscriber needs to send back this correlation
+
+RPC flow (picture)
+Client checks the correlation_id, and if it is not match  discard the message.
+Why it discards the message, why it does not raise the error. Reason for it.
+Cause when exchange restarts - client receives the new response from the queue with 
+old correlation_id, it discard it because it was not waiting for it.
+Wrong correlation_id - client just ignores it rather than raise an error or exception.
